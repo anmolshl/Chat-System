@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Chat</title>
+</head>
+<body>
+    <div id="buttons">
+        <ul align="left">
+            <li align="left">
+                <a href="MessageCluster.html" name="back" id="back">Inbox</a>
+            </li>
+            <li align="left">
+                <a href="Login.html" name="login" id="login">Logout</a>
+            </li>
+        </ul>
+    </div>
+    <?php
+        include 'start.php';
+    ?>
+    <div id="messages">
+        <table style="width:1000px;display:block">
+            <thead>
+                <tr>
+                    <td width="275">Received</td>
+                    <td width="275">Sent</td>
+                </tr>
+            </thead>
+            <tbody style='height:500px;overflow:auto;display:block;width:517px;'>
+                <?php
+                    $i=0;
+                    $key = "huff138gryff";
+                    while($dat_array[i]['sender'] != "" && $dat_array[i]['receiver'] != ""){
+                        if($dat_array[i]['sender'] == $user){
+                            echo "<tr>";
+                            echo "<td width="500">";
+                            echo "</td>";
+                            echo "<td width="500" bgcolor="aqua">";
+                            echo "<p>";
+                            echo MyDecrypt($dat_array[i]['message'], $key);
+                            echo "</p>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                        else{
+                            echo "<tr>";
+                            echo "<td width="500" bgcolor="aqua">";
+                            echo "<p>";
+                            echo MyDecrypt($dat_array[i]['message'], $key);
+                            echo "</p>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    }
+                    ?>
+            </tbody>
+        </table>
+    </div>
+    <div id="chatbox" align="left" valign="bottom">
+        <form method="post" action="send.php">
+        <table style="width:1000px;display:block">
+            <tr>
+                <td>
+                    <input type="text" id="message" name="message" />
+                </td>
+                <td>
+                    <input type="submit" id="send" name="send" value="Send"/>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</body>
+</html>

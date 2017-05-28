@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<?php
+    include 'start.php';
+?>
+<head>
+    <title>Inbox</title>
+</head>
+<body>
+    <table align="center" width="400">
+        <?php
+            for($i = 0; $i < sizeof($cluster_arr); i++){
+                echo '<tr align="center">';
+                echo "<td align="left"><a href="chat.html" name="anchor_chat" id="anchor_chat" align="left">".$cluster_arr[$i]."</a></td>";
+                echo "</tr>";
+            }
+        ?>
+        <a href="chat.html" name="anchor_chat" id="anchor_chat" align="left"></a>
+    </table>
+</body>
